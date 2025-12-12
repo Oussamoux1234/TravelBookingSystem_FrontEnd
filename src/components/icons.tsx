@@ -1,0 +1,20 @@
+import type { SVGProps } from 'react';
+
+export function NomadNavigatorLogo(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      {...props}
+    >
+      <circle cx="12" cy="12" r="10" />
+      <polygon points="12 2 15 10 12 22 9 10 12 2" />
+      <line x1="2" y1="12" x2="22" y2="12" />
+    </svg>
+  );
+}

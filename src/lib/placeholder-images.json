@@ -1,0 +1,94 @@
+{
+  "placeholderImages": [
+    {
+      "id": "hero-home",
+      "description": "A stunning view of mountains and a lake at sunrise, representing adventure.",
+      "imageUrl": "https://images.unsplash.com/photo-1613075019881-f475574c236a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxtb3VudGFpbiUyMGxhbmRzY2FwZXxlbnwwfHx8fDE3NjQ5MTUxNDZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "mountain landscape"
+    },
+    {
+      "id": "hotel-1",
+      "description": "Exterior of a modern mountain lodge in a snowy environment.",
+      "imageUrl": "https://images.unsplash.com/photo-1544646280-e243b3ab7d1e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxtb3VudGFpbiUyMGxvZGdlfGVufDB8fHx8MTc2NDkxODA5MXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "mountain lodge"
+    },
+    {
+      "id": "hotel-2",
+      "description": "A stylish, minimalist hotel room with a view of a bustling city at night.",
+      "imageUrl": "https://images.unsplash.com/photo-1568497093008-b808198db414?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8Y2l0eSUyMGhvdGVsfGVufDB8fHx8MTc2NDg1NzY2Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "city hotel"
+    },
+    {
+      "id": "hotel-3",
+      "description": "A beautiful view from a balcony overlooking a sunny coastline.",
+      "imageUrl": "https://images.unsplash.com/photo-1764619210367-f21f07862cf0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxjb2FzdGFsJTIwdmlld3xlbnwwfHx8fDE3NjQ4NzAyMTZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "coastal view"
+    },
+    {
+      "id": "hotel-4",
+      "description": "A classic, elegant hotel lobby with chandeliers and ornate furniture.",
+      "imageUrl": "https://images.unsplash.com/photo-1758448656987-cfae6bf225e4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxsdXh1cnklMjBsb2JieXxlbnwwfHx8fDE3NjQ5MzE0OTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "luxury lobby"
+    },
+    {
+      "id": "hotel-5",
+      "description": "A wooden cabin or treehouse nestled in a dense, green jungle.",
+      "imageUrl": "https://images.unsplash.com/photo-1612528910408-9c35cf5a6244?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxqdW5nbGUlMjByZXNvcnR8ZW58MHx8fHwxNzY0OTMxNDk1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "jungle resort"
+    },
+    {
+      "id": "hotel-6",
+      "description": "A luxury villa in a desert landscape at sunset.",
+      "imageUrl": "https://images.unsplash.com/photo-1674222709212-a6a7e378ac40?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8ZGVzZXJ0JTIwdmlsbGF8ZW58MHx8fHwxNzY0OTMxNDk1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "desert villa"
+    },
+    {
+      "id": "flight-1",
+      "description": "An airplane wing viewed from a window, flying above clouds with a city skyline in the distance.",
+      "imageUrl": "https://images.unsplash.com/photo-1603309040631-772df9922ef0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxhaXJwbGFuZSUyMHdpbmRvd3xlbnwwfHx8fDE3NjQ4NjczNTJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "airplane window"
+    },
+    {
+      "id": "flight-2",
+      "description": "The neon-lit streets of Tokyo at night, viewed from above.",
+      "imageUrl": "https://images.unsplash.com/photo-1617869884925-f8f0a51b2374?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHx0b2t5byUyMG5pZ2h0fGVufDB8fHx8MTc2NDkzMTQ5NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "tokyo night"
+    },
+    {
+      "id": "flight-3",
+      "description": "The modern skyline of Singapore with the Marina Bay Sands hotel.",
+      "imageUrl": "https://images.unsplash.com/flagged/photo-1562503542-2a1e6f03b16b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxzaW5nYXBvcmUlMjBza3lsaW5lfGVufDB8fHx8MTc2NDkzMTQ5NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "singapore skyline"
+    },
+    {
+      "id": "flight-4",
+      "description": "The skyline of Dubai with the Burj Khalifa prominent.",
+      "imageUrl": "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkdWJhaSUyMHNreWxpbmV8ZW58MHx8fHwxNzY0OTMxMTgwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "dubai skyline"
+    },
+    {
+      "id": "flight-5",
+      "description": "A vibrant beach scene in Miami with art deco buildings.",
+      "imageUrl": "https://images.unsplash.com/photo-1506812574058-fc75fa93fead?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxtaWFtaSUyMGJlYWNofGVufDB8fHx8MTc2NDkzMTQ5NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "miami beach"
+    },
+    {
+      "id": "flight-6",
+      "description": "Canals and historic houses in Amsterdam.",
+      "imageUrl": "https://images.unsplash.com/photo-1605378560393-b890db1c687a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxhbXN0ZXJkYW0lMjBjYW5hbHxlbnwwfHx8fDE3NjQ5MzE0OTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "amsterdam canal"
+    },
+    {
+      "id": "profile-avatar",
+      "description": "A generic, abstract avatar image for user profiles.",
+      "imageUrl": "https://images.unsplash.com/photo-1626470601402-5c6e8b2dc8d7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMHBvcnRyYWl0fGVufDB8fHx8MTc2NDg2MzAyNnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "abstract portrait"
+    },
+    {
+      "id": "ai-route-planner-hero",
+      "description": "A futuristic digital map with glowing lines representing routes.",
+      "imageUrl": "https://images.unsplash.com/photo-1548345680-f5475ea5df84?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxkaWdpdGFsJTIwbWFwfGVufDB8fHx8MTc2NDg0MzgzOXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "digital map"
+    }
+  ]
+}
