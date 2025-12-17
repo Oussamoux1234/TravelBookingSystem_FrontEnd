@@ -14,6 +14,7 @@ import BookingPage from '@/pages/Booking'
 import ProfilePage from '@/pages/Profile'
 import SignInPage from '@/pages/SignIn'
 import AIRoutePlannerPage from '@/pages/AIRoutePlanner'
+import ReservationDetailPage from '@/pages/ReservationDetail'
 
 function App() {
     return (
@@ -33,6 +34,7 @@ function App() {
                         <Route path="/flights/:slug" element={<FlightDetailPage />} />
                         <Route path="/booking" element={<BookingPage />} />
                         <Route path="/profile" element={<ProfilePage />} />
+                        <Route path="/reservations/:id" element={<ReservationDetailPage />} />
                         <Route path="/auth/signin" element={<SignInPage />} />
                         <Route path="/ai-route-planner" element={<AIRoutePlannerPage />} />
                     </Route>
@@ -44,3 +46,4 @@ function App() {
 }
 
 export default App
+

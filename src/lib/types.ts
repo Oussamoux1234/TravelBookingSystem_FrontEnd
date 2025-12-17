@@ -31,6 +31,25 @@ export type Reservation = {
   hotelId?: number;
   volId?: number;
   dateReservation?: string;
+  montantTotal?: number;
+  statutReservation?: string;
+  transactionPaiementId?: string;
+  // New booking details
+  passengerName?: string;
+  typeChambre?: string;
+  seatNumber?: string;
+  flightClass?: string;
+  checkInDate?: string;
+  checkOutDate?: string;
+};
+
+// Enriched reservation with full item details for display
+export type ReservationDisplay = Reservation & {
+  itemType: 'hotel' | 'flight';
+  hotel?: HotelDisplay;
+  flight?: FlightDisplay;
+  itemName: string;
+  bookingDate: string;
 };
 
 export type UserProfile = {

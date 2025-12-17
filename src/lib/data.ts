@@ -1,4 +1,4 @@
-import type { Hotel, Vol, Reservation, HotelDisplay, FlightDisplay } from './types';
+import type { Hotel, Vol, Reservation, HotelDisplay, FlightDisplay, ReservationDisplay } from './types';
 import { api } from './api';
 
 // Placeholder images for hotels and flights
@@ -35,6 +35,23 @@ const transformVol = (vol: Vol): FlightDisplay => ({
   airline: airlines[vol.id % airlines.length]
 });
 
+// Helper to extract ID from Spring Data REST HAL _links.self.href
+const extractIdFromHal = (item: any): number | undefined => {
+  if (item.id !== undefined) {
+    return item.id;
+  }
+
+  // Extract from HAL _links.self.href (e.g., "http://localhost:8082/hotels/1")
+  if (item._links?.self?.href) {
+    const match = item._links.self.href.match(/\/(\d+)$/);
+    if (match) {
+      return parseInt(match[1], 10);
+    }
+  }
+
+  return undefined;
+};
+
 /**
  * Fetch hotels from backend
  * Handles both direct arrays and HAL/JSON responses from Spring Data REST
@@ -44,7 +61,7 @@ export const getHotels = async (): Promise<HotelDisplay[]> => {
     const response = await api.get<any>('/hotels');
 
     // Handle Spring Data REST HAL response
-    let hotels: Hotel[];
+    let hotels: any[];
     if (response._embedded && response._embedded.hotels) {
       hotels = response._embedded.hotels;
     } else if (Array.isArray(response)) {
@@ -54,7 +71,13 @@ export const getHotels = async (): Promise<HotelDisplay[]> => {
       return [];
     }
 
-    return hotels.map(transformHotel);
+    // Extract IDs from HAL links and add to objects
+    const hotelsWithIds = hotels.map(hotel => ({
+      ...hotel,
+      id: extractIdFromHal(hotel) || hotel.id
+    }));
+
+    return hotelsWithIds.map(transformHotel);
   } catch (error) {
     console.error('Failed to fetch hotels:', error);
     return [];
@@ -66,7 +89,9 @@ export const getHotels = async (): Promise<HotelDisplay[]> => {
  */
 export const getHotelById = async (id: string): Promise<HotelDisplay | undefined> => {
   try {
-    const hotel = await api.get<Hotel>(`/hotels/${id}`);
+    const hotel = await api.get<any>(`/hotels/${id}`);
+    // Add ID if not present
+    hotel.id = extractIdFromHal(hotel) || parseInt(id, 10);
     return transformHotel(hotel);
   } catch (error) {
     console.error(`Failed to fetch hotel ${id}:`, error);
@@ -84,7 +109,7 @@ export const getFlights = async (): Promise<FlightDisplay[]> => {
     const response = await api.get<any>('/vols');
 
     // Handle Spring Data REST HAL response
-    let vols: Vol[];
+    let vols: any[];
     if (response._embedded && response._embedded.vols) {
       vols = response._embedded.vols;
     } else if (Array.isArray(response)) {
@@ -94,7 +119,13 @@ export const getFlights = async (): Promise<FlightDisplay[]> => {
       return [];
     }
 
-    return vols.map(transformVol);
+    // Extract IDs from HAL links and add to objects
+    const volsWithIds = vols.map(vol => ({
+      ...vol,
+      id: extractIdFromHal(vol) || vol.id
+    }));
+
+    return volsWithIds.map(transformVol);
   } catch (error) {
     console.error('Failed to fetch flights:', error);
     return [];
@@ -106,7 +137,9 @@ export const getFlights = async (): Promise<FlightDisplay[]> => {
  */
 export const getFlightById = async (id: string): Promise<FlightDisplay | undefined> => {
   try {
-    const vol = await api.get<Vol>(`/vols/${id}`);
+    const vol = await api.get<any>(`/vols/${id}`);
+    // Add ID if not present
+    vol.id = extractIdFromHal(vol) || parseInt(id, 10);
     return transformVol(vol);
   } catch (error) {
     console.error(`Failed to fetch flight ${id}:`, error);
@@ -121,20 +154,44 @@ type ReservationPayload = {
   clientEmail: string;
   type: 'flight' | 'hotel';
   itemId: number;
+  passengerName: string;
+  // Hotel-specific options
+  typeChambre?: string;
+  checkInDate?: string;
+  checkOutDate?: string;
+  // Flight-specific options
+  seatNumber?: string;
+  flightClass?: string;
 };
 
 export const createReservation = async (bookingData: ReservationPayload): Promise<Reservation> => {
-  const payload: { clientEmail: string; hotelId?: number; volId?: number } = {
-    clientEmail: bookingData.clientEmail
+  const payload = {
+    clientEmail: bookingData.clientEmail,
+    hotelId: bookingData.type === 'hotel' ? bookingData.itemId : 0,
+    volId: bookingData.type === 'flight' ? bookingData.itemId : 0,
+    passengerName: bookingData.passengerName,
+    typeChambre: bookingData.typeChambre || '',
+    seatNumber: bookingData.seatNumber || '',
+    flightClass: bookingData.flightClass || '',
+    checkInDate: bookingData.checkInDate || null,
+    checkOutDate: bookingData.checkOutDate || null,
   };
 
-  if (bookingData.type === 'hotel') {
-    payload.hotelId = bookingData.itemId;
-  } else {
-    payload.volId = bookingData.itemId;
-  }
-
+  console.log('Creating reservation with payload:', payload);
   return api.post<Reservation>('/reservations', payload);
+};
+
+/**
+ * Get a single reservation by ID
+ */
+export const getReservationById = async (id: string): Promise<Reservation | undefined> => {
+  try {
+    const reservation = await api.get<Reservation>(`/reservations/${id}`);
+    return reservation;
+  } catch (error) {
+    console.error(`Failed to fetch reservation ${id}:`, error);
+    return undefined;
+  }
 };
 
 /**
@@ -154,6 +211,59 @@ export const getReservationsByEmail = async (email: string): Promise<Reservation
     return [];
   } catch (error) {
     console.error('Failed to fetch reservations:', error);
+    return [];
+  }
+};
+
+/**
+ * Get reservations with full hotel/flight details for display
+ */
+export const getReservationsWithDetails = async (email: string): Promise<ReservationDisplay[]> => {
+  try {
+    const reservations = await getReservationsByEmail(email);
+
+    // Enrich each reservation with hotel or flight details
+    const enrichedReservations = await Promise.all(
+      reservations.map(async (reservation) => {
+        const enriched: ReservationDisplay = {
+          ...reservation,
+          itemType: reservation.hotelId ? 'hotel' : 'flight',
+          itemName: '',
+          bookingDate: reservation.dateReservation || new Date().toISOString(),
+        };
+
+        try {
+          if (reservation.hotelId) {
+            // Fetch hotel details
+            const hotel = await getHotelById(String(reservation.hotelId));
+            if (hotel) {
+              enriched.hotel = hotel;
+              enriched.itemName = hotel.nom;
+            } else {
+              enriched.itemName = `Hôtel #${reservation.hotelId}`;
+            }
+          } else if (reservation.volId) {
+            // Fetch flight details
+            const flight = await getFlightById(String(reservation.volId));
+            if (flight) {
+              enriched.flight = flight;
+              enriched.itemName = `${flight.aeroportDepart} → ${flight.aeroportArrivee}`;
+            } else {
+              enriched.itemName = `Vol #${reservation.volId}`;
+            }
+          }
+        } catch (error) {
+          console.error(`Failed to fetch details for reservation ${reservation.id}:`, error);
+          // Keep the reservation with basic info
+        }
+
+        return enriched;
+      })
+    );
+
+    return enrichedReservations;
+  } catch (error) {
+    console.error('Failed to fetch reservations with details:', error);
     return [];
   }
 };

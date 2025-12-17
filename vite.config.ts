@@ -12,24 +12,8 @@ export default defineConfig({
   },
   server: {
     port: 9002,
-    proxy: {
-      // Proxy API requests to Spring Cloud Gateway
-      '/hotels': {
-        target: 'http://localhost:8080',
-        changeOrigin: true,
-        secure: false,
-      },
-      '/vols': {
-        target: 'http://localhost:8080',
-        changeOrigin: true,
-        secure: false,
-      },
-      '/reservations': {
-        target: 'http://localhost:8080',
-        changeOrigin: true,
-        secure: false,
-      },
-    },
+    // No proxy needed since we're using VITE_API_BASE_URL with CORS
+    // The API client makes direct requests to http://localhost:8080
   },
   envPrefix: 'VITE_',
 })

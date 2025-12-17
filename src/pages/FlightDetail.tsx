@@ -17,11 +17,18 @@ export default function FlightDetail() {
     const [flight, setFlight] = useState<FlightDisplay | null | undefined>(null);
     const [loading, setLoading] = useState(true);
 
+    console.log('FlightDetail rendering, slug:', slug);
+
     useEffect(() => {
         const fetchFlight = async () => {
-            if (!slug) return;
+            if (!slug) {
+                console.log('No slug, returning');
+                return;
+            }
+            console.log('Fetching flight with ID:', slug);
             setLoading(true);
             const data = await getFlightById(slug);
+            console.log('Flight data received:', data);
             setFlight(data);
             setLoading(false);
         };
