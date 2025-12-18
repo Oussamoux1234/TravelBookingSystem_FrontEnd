@@ -13,6 +13,7 @@ import FlightDetailPage from '@/pages/FlightDetail'
 import BookingPage from '@/pages/Booking'
 import ProfilePage from '@/pages/Profile'
 import SignInPage from '@/pages/SignIn'
+import SignUpPage from '@/pages/SignUp'
 import AIRoutePlannerPage from '@/pages/AIRoutePlanner'
 import ReservationDetailPage from '@/pages/ReservationDetail'
 
@@ -36,6 +37,7 @@ function App() {
                         <Route path="/profile" element={<ProfilePage />} />
                         <Route path="/reservations/:id" element={<ReservationDetailPage />} />
                         <Route path="/auth/signin" element={<SignInPage />} />
+                        <Route path="/auth/signup" element={<SignUpPage />} />
                         <Route path="/ai-route-planner" element={<AIRoutePlannerPage />} />
                     </Route>
                 </Routes>

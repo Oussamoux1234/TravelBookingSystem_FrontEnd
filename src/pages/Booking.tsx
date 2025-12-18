@@ -15,6 +15,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { useToast } from '@/hooks/use-toast';
 import { Loader2, Lock } from 'lucide-react';
 import { placeholderImages } from '@/lib/placeholder-images';
+import { useAuth } from '@/contexts/auth-provider';
 
 const bookingSchema = z.object({
     email: z.string().email(),
@@ -44,6 +45,7 @@ export default function Booking() {
     const navigate = useNavigate();
     const [searchParams] = useSearchParams();
     const { toast } = useToast();
+    const { user, isAuthenticated, loading: authLoading } = useAuth();
 
     const type = searchParams.get('type') as 'hotel' | 'flight' | null;
     const id = searchParams.get('id');
@@ -58,6 +60,18 @@ export default function Booking() {
     const [seatNumber, setSeatNumber] = useState('');
     const [checkInDate, setCheckInDate] = useState('');
     const [checkOutDate, setCheckOutDate] = useState('');
+
+    // Redirect to login if not authenticated
+    useEffect(() => {
+        if (!authLoading && !isAuthenticated) {
+            toast({
+                variant: 'destructive',
+                title: 'Connexion requise',
+                description: 'Veuillez vous connecter pour effectuer une réservation.',
+            });
+            navigate('/auth/signin');
+        }
+    }, [authLoading, isAuthenticated, navigate, toast]);
 
     useEffect(() => {
         async function fetchItem() {
@@ -77,7 +91,7 @@ export default function Booking() {
         formState: { errors },
     } = useForm<BookingFormValues>({
         resolver: zodResolver(bookingSchema),
-        defaultValues: { email: 'user@example.com' }
+        defaultValues: { email: user?.email || '', name: user?.name || '' }
     });
 
     const calculatePrice = () => {
@@ -205,7 +219,7 @@ export default function Booking() {
                                             </div>
                                             <div className="grid grid-cols-2 gap-4">
                                                 <div className="space-y-2">
-                                                    <Label htmlFor="checkIn">Date d'arrivée</Label>
+                                                    <Label htmlFor="checkIn">Check-in</Label>
                                                     <Input
                                                         id="checkIn"
                                                         type="date"
@@ -214,7 +228,7 @@ export default function Booking() {
                                                     />
                                                 </div>
                                                 <div className="space-y-2">
-                                                    <Label htmlFor="checkOut">Date de départ</Label>
+                                                    <Label htmlFor="checkOut">Check-out</Label>
                                                     <Input
                                                         id="checkOut"
                                                         type="date"

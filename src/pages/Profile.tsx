@@ -1,10 +1,11 @@
 // Converted from Next.js to React
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { Mail, Ticket, Hotel as HotelIcon, Plane, MapPin, Calendar } from 'lucide-react';
+import { Mail, Ticket, Hotel as HotelIcon, Plane, MapPin, Calendar, LogOut } from 'lucide-react';
 import type { ReservationDisplay } from '@/lib/types';
-import { getReservationsWithDetails } from '@/lib/data';
+import { getMyReservationsWithDetails } from '@/lib/data';
+import { useAuth } from '@/contexts/auth-provider';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -15,19 +16,53 @@ import { format } from 'date-fns';
 import { fr } from 'date-fns/locale';
 
 export default function Profile() {
+    const navigate = useNavigate();
+    const { user, isAuthenticated, loading: authLoading, logout } = useAuth();
     const [bookings, setBookings] = useState<ReservationDisplay[]>([]);
     const [bookingsLoading, setBookingsLoading] = useState(true);
-    const userEmail = 'user@example.com'; // Mock user
 
     useEffect(() => {
+        // Redirect to login if not authenticated
+        if (!authLoading && !isAuthenticated) {
+            navigate('/auth/signin');
+            return;
+        }
+
         const fetchBookings = async () => {
+            if (!isAuthenticated) return;
             setBookingsLoading(true);
-            const userBookings = await getReservationsWithDetails(userEmail);
+            const userBookings = await getMyReservationsWithDetails();
             setBookings(userBookings);
             setBookingsLoading(false);
         };
-        fetchBookings();
-    }, [userEmail]);
+
+        if (isAuthenticated) {
+            fetchBookings();
+        }
+    }, [isAuthenticated, authLoading, navigate]);
+
+    const handleLogout = () => {
+        logout();
+        navigate('/');
+    };
+
+    // Show loading while checking auth
+    if (authLoading) {
+        return (
+            <div className="container mx-auto px-4 py-12">
+                <Card className="max-w-4xl mx-auto">
+                    <CardHeader className="bg-secondary/30 p-8">
+                        <Skeleton className="h-32 w-32 rounded-full" />
+                    </CardHeader>
+                </Card>
+            </div>
+        );
+    }
+
+    // Redirect handled by useEffect, but show nothing while redirecting
+    if (!isAuthenticated) {
+        return null;
+    }
 
     return (
         <>
@@ -41,18 +76,22 @@ export default function Profile() {
                     <CardHeader className="bg-secondary/30 p-8">
                         <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
                             <Avatar className="h-32 w-32 border-4 border-background shadow-lg">
-                                <AvatarImage src={'/placeholder-avatar.jpg'} alt={'Nomad User'} />
+                                <AvatarImage src={'/placeholder-avatar.jpg'} alt={user?.name || 'User'} />
                                 <AvatarFallback className="text-4xl font-headline">
-                                    NU
+                                    {user?.name?.substring(0, 2).toUpperCase() || 'U'}
                                 </AvatarFallback>
                             </Avatar>
-                            <div className="text-center md:text-left pt-4">
-                                <h1 className="text-3xl font-bold font-headline">Nomad User</h1>
+                            <div className="text-center md:text-left pt-4 flex-1">
+                                <h1 className="text-3xl font-bold font-headline">{user?.name || 'Utilisateur'}</h1>
                                 <p className="text-lg text-muted-foreground flex items-center justify-center md:justify-start gap-2 mt-2">
                                     <Mail className="w-4 h-4" />
-                                    {userEmail}
+                                    {user?.email}
                                 </p>
                             </div>
+                            <Button variant="outline" onClick={handleLogout} className="gap-2">
+                                <LogOut className="w-4 h-4" />
+                                Déconnexion
+                            </Button>
                         </div>
                     </CardHeader>
                     <CardContent className="p-8">

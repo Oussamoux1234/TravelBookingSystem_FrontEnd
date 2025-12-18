@@ -117,8 +117,8 @@ export default function ReservationDetail() {
     return (
         <>
             <Helmet>
-                <title>Réservation #{reservation.id} - Nomad Navigator</title>
-                <meta name="description" content={`Détails de la réservation #${reservation.id}`} />
+                <title>{`Réservation #${reservation.id || ''} - Nomad Navigator`}</title>
+                <meta name="description" content={`Détails de la réservation #${reservation.id || ''}`} />
             </Helmet>
 
             <div className="container mx-auto px-4 py-12">

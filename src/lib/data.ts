@@ -18,14 +18,17 @@ const getImageForId = (id: number, imageList: string[]): string => {
 };
 
 // Transform backend Hotel to HotelDisplay
-const transformHotel = (hotel: Hotel): HotelDisplay => ({
+const transformHotel = (hotel: any): HotelDisplay => ({
   ...hotel,
   imageId: getImageForId(hotel.id, hotelImages),
   rating: 4 + (hotel.id % 10) / 10, // Generate rating between 4.0-4.9
   description: `Découvrez ${hotel.nom}, situé à ${hotel.ville}. Un établissement de qualité pour votre séjour.`,
-  pricePerNight: hotel.chambres && hotel.chambres.length > 0
-    ? Math.min(...hotel.chambres.map(c => c.prix))
-    : 100 + (hotel.id * 25)
+  // Handle prixParNuit from backend or calculate from chambres
+  pricePerNight: hotel.prixParNuit
+    ? Number(hotel.prixParNuit)
+    : (hotel.chambres && hotel.chambres.length > 0
+      ? Math.min(...hotel.chambres.map((c: any) => Number(c.prix) || 100))
+      : 100 + (hotel.id * 25))
 });
 
 // Transform backend Vol to FlightDisplay
@@ -195,6 +198,19 @@ export const getReservationById = async (id: string): Promise<Reservation | unde
 };
 
 /**
+ * Get current user's reservations (requires authentication)
+ */
+export const getMyReservations = async (): Promise<Reservation[]> => {
+  try {
+    const response = await api.get<Reservation[]>('/reservations/my');
+    return Array.isArray(response) ? response : [];
+  } catch (error) {
+    console.error('Failed to fetch my reservations:', error);
+    return [];
+  }
+};
+
+/**
  * Get reservations by email
  */
 export const getReservationsByEmail = async (email: string): Promise<Reservation[]> => {
@@ -264,6 +280,55 @@ export const getReservationsWithDetails = async (email: string): Promise<Reserva
     return enrichedReservations;
   } catch (error) {
     console.error('Failed to fetch reservations with details:', error);
+    return [];
+  }
+};
+
+/**
+ * Get current user's reservations with full hotel/flight details (requires auth)
+ */
+export const getMyReservationsWithDetails = async (): Promise<ReservationDisplay[]> => {
+  try {
+    const reservations = await getMyReservations();
+
+    const enrichedReservations = await Promise.all(
+      reservations.map(async (reservation) => {
+        const enriched: ReservationDisplay = {
+          ...reservation,
+          itemType: reservation.hotelId ? 'hotel' : 'flight',
+          itemName: '',
+          bookingDate: reservation.dateReservation || new Date().toISOString(),
+        };
+
+        try {
+          if (reservation.hotelId) {
+            const hotel = await getHotelById(String(reservation.hotelId));
+            if (hotel) {
+              enriched.hotel = hotel;
+              enriched.itemName = hotel.nom;
+            } else {
+              enriched.itemName = `Hôtel #${reservation.hotelId}`;
+            }
+          } else if (reservation.volId) {
+            const flight = await getFlightById(String(reservation.volId));
+            if (flight) {
+              enriched.flight = flight;
+              enriched.itemName = `${flight.aeroportDepart} → ${flight.aeroportArrivee}`;
+            } else {
+              enriched.itemName = `Vol #${reservation.volId}`;
+            }
+          }
+        } catch (error) {
+          console.error(`Failed to fetch details for reservation ${reservation.id}:`, error);
+        }
+
+        return enriched;
+      })
+    );
+
+    return enrichedReservations;
+  } catch (error) {
+    console.error('Failed to fetch my reservations with details:', error);
     return [];
   }
 };
