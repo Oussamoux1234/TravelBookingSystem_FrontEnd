@@ -1,16 +1,21 @@
 import type { Hotel, Vol, Reservation, HotelDisplay, FlightDisplay, ReservationDisplay } from './types';
 import { api } from './api';
 
-// Placeholder images for hotels and flights
+// Placeholder images for hotels and flights (10 each for unique display)
 const hotelImages = [
-  'hotel-1', 'hotel-2', 'hotel-3', 'hotel-4', 'hotel-5', 'hotel-6'
+  'hotel-1', 'hotel-2', 'hotel-3', 'hotel-4', 'hotel-5',
+  'hotel-6', 'hotel-7', 'hotel-8', 'hotel-9', 'hotel-10'
 ];
 
 const flightImages = [
-  'flight-1', 'flight-2', 'flight-3', 'flight-4'
+  'flight-1', 'flight-2', 'flight-3', 'flight-4', 'flight-5',
+  'flight-6', 'flight-7', 'flight-8', 'flight-9', 'flight-10'
 ];
 
-const airlines = ['Air France', 'Emirates', 'Lufthansa', 'Qatar Airways', 'Turkish Airlines', 'British Airways'];
+const airlines = [
+  'Air France', 'Japan Airlines', 'Singapore Airlines', 'Emirates', 'American Airlines',
+  'KLM', 'Qantas', 'Turkish Airlines', 'Hawaiian Airlines', 'Lufthansa'
+];
 
 // Helper to get a consistent image for an ID
 const getImageForId = (id: number, imageList: string[]): string => {

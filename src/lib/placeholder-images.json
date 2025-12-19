@@ -8,75 +8,123 @@
     },
     {
       "id": "hotel-1",
-      "description": "Exterior of a modern mountain lodge in a snowy environment.",
+      "description": "Alpine mountain lodge in snowy Chamonix.",
       "imageUrl": "https://images.unsplash.com/photo-1544646280-e243b3ab7d1e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxtb3VudGFpbiUyMGxvZGdlfGVufDB8fHx8MTc2NDkxODA5MXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "mountain lodge"
     },
     {
       "id": "hotel-2",
-      "description": "A stylish, minimalist hotel room with a view of a bustling city at night.",
+      "description": "Manhattan Grand Hotel in bustling New York City.",
       "imageUrl": "https://images.unsplash.com/photo-1568497093008-b808198db414?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8Y2l0eSUyMGhvdGVsfGVufDB8fHx8MTc2NDg1NzY2Mnww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "city hotel"
+      "imageHint": "city hotel nyc"
     },
     {
       "id": "hotel-3",
-      "description": "A beautiful view from a balcony overlooking a sunny coastline.",
-      "imageUrl": "https://images.unsplash.com/photo-1764619210367-f21f07862cf0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxjb2FzdGFsJTIwdmlld3xlbnwwfHx8fDE3NjQ4NzAyMTZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "coastal view"
+      "description": "Côte d'Azur Beach Resort with stunning coastal views.",
+      "imageUrl": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxiZWFjaCUyMHJlc29ydHxlbnwwfHx8fDE3MzQ1MjM2ODB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "beach resort nice"
     },
     {
       "id": "hotel-4",
-      "description": "A classic, elegant hotel lobby with chandeliers and ornate furniture.",
-      "imageUrl": "https://images.unsplash.com/photo-1758448656987-cfae6bf225e4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxsdXh1cnklMjBsb2JieXxlbnwwfHx8fDE3NjQ5MzE0OTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "luxury lobby"
+      "description": "The elegant Ritz Paris with classic luxury.",
+      "imageUrl": "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBob3RlbCUyMGxvYmJ5fGVufDB8fHx8MTczNDUyMzY4MHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "luxury paris hotel"
     },
     {
       "id": "hotel-5",
-      "description": "A wooden cabin or treehouse nestled in a dense, green jungle.",
+      "description": "Amazon Rainforest Lodge nestled in the jungle.",
       "imageUrl": "https://images.unsplash.com/photo-1612528910408-9c35cf5a6244?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxqdW5nbGUlMjByZXNvcnR8ZW58MHx8fHwxNzY0OTMxNDk1fDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "jungle resort"
+      "imageHint": "jungle resort amazon"
     },
     {
       "id": "hotel-6",
-      "description": "A luxury villa in a desert landscape at sunset.",
+      "description": "Sahara Desert Oasis villa in Marrakech.",
       "imageUrl": "https://images.unsplash.com/photo-1674222709212-a6a7e378ac40?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8ZGVzZXJ0JTIwdmlsbGF8ZW58MHx8fHwxNzY0OTMxNDk1fDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "desert villa"
+      "imageHint": "desert villa marrakech"
+    },
+    {
+      "id": "hotel-7",
+      "description": "Maldives Water Villa on crystal clear waters.",
+      "imageUrl": "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtYWxkaXZlcyUyMHdhdGVyJTIwdmlsbGF8ZW58MHx8fHwxNzM0NTIzNjgwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "maldives water villa"
+    },
+    {
+      "id": "hotel-8",
+      "description": "Edinburgh Castle Hotel on the historic Royal Mile.",
+      "imageUrl": "https://images.unsplash.com/photo-1580981433573-c5fa6f3bf099?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxlZGluYnVyZ2glMjBjYXN0bGV8ZW58MHx8fHwxNzM0NTIzNjgwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "edinburgh castle hotel"
+    },
+    {
+      "id": "hotel-9",
+      "description": "Kyoto Zen Spa Resort in traditional Japanese style.",
+      "imageUrl": "https://images.unsplash.com/photo-1545569341-9eb8b30979d9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxreW90byUyMHRlbXBsZXxlbnwwfHx8fDE3MzQ1MjM2ODB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "kyoto zen spa"
+    },
+    {
+      "id": "hotel-10",
+      "description": "Swiss Alps Chalet in snowy Zermatt with mountain views.",
+      "imageUrl": "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxzd2lzcyUyMGNoYWxldHxlbnwwfHx8fDE3MzQ1MjM2ODB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "swiss alps chalet"
     },
     {
       "id": "flight-1",
-      "description": "An airplane wing viewed from a window, flying above clouds with a city skyline in the distance.",
+      "description": "Paris to New York - Airplane over city skyline.",
       "imageUrl": "https://images.unsplash.com/photo-1603309040631-772df9922ef0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxhaXJwbGFuZSUyMHdpbmRvd3xlbnwwfHx8fDE3NjQ4NjczNTJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "airplane window"
+      "imageHint": "paris new york flight"
     },
     {
       "id": "flight-2",
-      "description": "The neon-lit streets of Tokyo at night, viewed from above.",
+      "description": "Tokyo to Seoul - Neon lit streets of Tokyo.",
       "imageUrl": "https://images.unsplash.com/photo-1617869884925-f8f0a51b2374?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHx0b2t5byUyMG5pZ2h0fGVufDB8fHx8MTc2NDkzMTQ5NXww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "tokyo night"
+      "imageHint": "tokyo seoul flight"
     },
     {
       "id": "flight-3",
-      "description": "The modern skyline of Singapore with the Marina Bay Sands hotel.",
+      "description": "London to Singapore - Marina Bay Sands skyline.",
       "imageUrl": "https://images.unsplash.com/flagged/photo-1562503542-2a1e6f03b16b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxzaW5nYXBvcmUlMjBza3lsaW5lfGVufDB8fHx8MTc2NDkzMTQ5NXww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "singapore skyline"
+      "imageHint": "london singapore flight"
     },
     {
       "id": "flight-4",
-      "description": "The skyline of Dubai with the Burj Khalifa prominent.",
+      "description": "Dubai to Paris - Burj Khalifa skyline.",
       "imageUrl": "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkdWJhaSUyMHNreWxpbmV8ZW58MHx8fHwxNzY0OTMxMTgwfDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "dubai skyline"
+      "imageHint": "dubai paris flight"
     },
     {
       "id": "flight-5",
-      "description": "A vibrant beach scene in Miami with art deco buildings.",
+      "description": "Miami to Cancun - Vibrant beach scene.",
       "imageUrl": "https://images.unsplash.com/photo-1506812574058-fc75fa93fead?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxtaWFtaSUyMGJlYWNofGVufDB8fHx8MTc2NDkzMTQ5NXww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "miami beach"
+      "imageHint": "miami cancun flight"
     },
     {
       "id": "flight-6",
-      "description": "Canals and historic houses in Amsterdam.",
+      "description": "Amsterdam to Barcelona - Beautiful canals.",
       "imageUrl": "https://images.unsplash.com/photo-1605378560393-b890db1c687a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxhbXN0ZXJkYW0lMjBjYW5hbHxlbnwwfHx8fDE3NjQ5MzE0OTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "amsterdam canal"
+      "imageHint": "amsterdam barcelona flight"
+    },
+    {
+      "id": "flight-7",
+      "description": "Sydney to Auckland - Opera House harbor view.",
+      "imageUrl": "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxzeWRuZXklMjBvcGVyYSUyMGhvdXNlfGVufDB8fHx8MTczNDUyMzY4MHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "sydney auckland flight"
+    },
+    {
+      "id": "flight-8",
+      "description": "Istanbul to Rome - Blue Mosque at sunset.",
+      "imageUrl": "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxpc3RhbmJ1bCUyMG1vc3F1ZXxlbnwwfHx8fDE3MzQ1MjM2ODB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "istanbul rome flight"
+    },
+    {
+      "id": "flight-9",
+      "description": "Los Angeles to Honolulu - Tropical paradise.",
+      "imageUrl": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxoYXdhaWklMjBiZWFjaHxlbnwwfHx8fDE3MzQ1MjM2ODB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "los angeles honolulu flight"
+    },
+    {
+      "id": "flight-10",
+      "description": "Frankfurt to Cape Town - Table Mountain view.",
+      "imageUrl": "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjYXBlJTIwdG93biUyMHRhYmxlJTIwbW91bnRhaW58ZW58MHx8fHwxNzM0NTIzNjgwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "frankfurt cape town flight"
     },
     {
       "id": "profile-avatar",
